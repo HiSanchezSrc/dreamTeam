@@ -1,9 +1,5 @@
-from flask import Flask, request, flash, render_template  # import flask
-from wtforms import Form, TextField, validators, SelectField, SubmitField, BooleanField, PasswordField, StringField
-from wtforms.validators import DataRequired
 from app import app
 
-from user import *
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
 

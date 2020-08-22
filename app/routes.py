@@ -1,9 +1,4 @@
-from flask import render_template
-from routes import url_for
-
-from app import app
-from user import User
-from flask import render_template
+from app.models.user import User
 from app import app
 from app.forms import LoginForm
 from flask import render_template, flash, redirect
@@ -12,7 +7,7 @@ from flask import render_template, flash, redirect
 @app.route('/')
 @app.route('/index')
 def index():
-    user = {'username': 'Giovanni'}
+    user = User(username="Bob", password_hash="password", email="bob@email.com")
     posts = [
         {
             'author': {'username': 'John'},
