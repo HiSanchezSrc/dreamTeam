@@ -1,7 +1,12 @@
-from program.user import User
-from program import app
+from program.user import User, Recipe
+from program import app, db
 from program.forms import LoginForm
 from flask import render_template, flash, redirect
+
+
+@app.shell_context_processor
+def make_shell_context():
+    return {'db': db, 'User': User, 'Recipe': Recipe}
 
 
 @app.route('/')
