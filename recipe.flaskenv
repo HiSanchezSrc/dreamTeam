@@ -1,1 +1,1 @@
-FLASK_APP=recipie.py
+FLASK_APP=recipe.py

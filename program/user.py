@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from app import db
+from program import db
 
 
 def parse_recipes(recipe_list):
@@ -33,7 +33,7 @@ class User(db.Model):
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(128))
-    recipes = db.relationship('Recipe', backref='name', lazy='dynamic')
+    recipes = db.relationship('Recipe', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -49,6 +49,9 @@ class Recipe(db.Model):
     body = db.Column(db.String(500))
 
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
+
+
 
     def __repr__(self):
         return '<Recipe {}>'.format(self.body)

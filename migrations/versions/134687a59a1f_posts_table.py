@@ -1,8 +1,8 @@
-"""users table
+"""posts table
 
-Revision ID: 7d782184272c
+Revision ID: 134687a59a1f
 Revises: 
-Create Date: 2020-08-22 08:28:24.819608
+Create Date: 2020-08-22 13:53:03.167145
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '7d782184272c'
+revision = '134687a59a1f'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,11 +29,11 @@ def upgrade():
     op.create_index(op.f('ix_user_username'), 'user', ['username'], unique=True)
     op.create_table('recipe',
     sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.Column('name', sa.String(length=32), nullable=True),
     sa.Column('ingredients', sa.String(length=140), nullable=True),
     sa.Column('time', sa.Integer(), nullable=True),
     sa.Column('body', sa.String(length=500), nullable=True),
-    sa.Column('owner_id', sa.Integer(), nullable=True),
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
